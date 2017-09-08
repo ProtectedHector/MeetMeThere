@@ -1,3 +1,4 @@
+# Symfony directories
 /.web-server-pid
 /app/config/parameters.yml
 /build/
@@ -16,6 +17,13 @@
 /vendor/
 /web/bundles/
 
-# User-specific stuff:
-.idea/workspace.xml
-.idea/MeetMeThere.iml
+# Configuration files
+app/config/parameters.ini
+app/config/parameters.yml
+app/config/parameters.php
+
+# Composer
+auth.json
+
+# PhpStorm
+.idea
