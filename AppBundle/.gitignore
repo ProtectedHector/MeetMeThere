@@ -27,3 +27,6 @@ auth.json
 
 # PhpStorm
 .idea
+
+# Sublime
+.DS_Store
