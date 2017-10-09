@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Email;
 
 /**
  * @ORM\Entity()
@@ -11,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Traveler
 {
     /**
+     * @var integer
+     *
      * @ORM\Id()
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue()
@@ -18,38 +21,52 @@ class Traveler
     protected $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
     protected $firstName;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
     protected $lastName;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $username;
 
     /**
+     * @var Email
+     *
      * @ORM\Column(type="string", length=254)
      */
     protected $email;
 
     /**
-     * Many Travelers have One Nationality.
+     * @var Country
+     *
+     * Many Travelers have One Country.
      * @ORM\ManyToOne(targetEntity="Country", cascade="persist")
      * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
      */
-    protected $nationality;
+    protected $country;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $photoUrl;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=128)
      */
     protected $password;
