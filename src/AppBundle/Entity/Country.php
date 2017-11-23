@@ -11,29 +11,38 @@ use Doctrine\ORM\Mapping as ORM;
 class Country
 {
     /**
+     * @var integer
+     *
      * @ORM\Id()
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue()
-     * @ORM\OneToMany(targetEntity="Traveler", mappedBy="traveler")
      */
     protected $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
     protected $name;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=2)
      */
     protected $iso3166Alpha2;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=3)
      */
     protected $iso3166Alpha3;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=3)
      */
     protected $iso3166Numeric3;
