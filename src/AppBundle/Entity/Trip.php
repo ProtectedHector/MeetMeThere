@@ -58,42 +58,142 @@ class Trip
     protected $traveler;
 
     /**
-     * @var Collection|City[]
+     * @var TripCityRelation
      *
-     * Many Users have Many Groups.
-     * @ORM\ManyToMany(targetEntity="City")
+     * @ORM\OneToMany(targetEntity="TripCityRelation", mappedBy="trip")
      */
-    private $cities;
+    protected $tripCityRelation;
 
     /**
-     * Trip constructor.
+     * @return int
      */
-    public function __construct() {
-        $this->cities = new ArrayCollection();
-    }
-
-    /**
-     * @param City $city
-     */
-    public function addCity(City $city)
+    public function getId(): int
     {
-        if ($this->cities->contains($city)) {
-            return ;
-        }
-
-        $this->cities->add($city);
-        $city->addTrip($this);
+        return $this->id;
     }
 
     /**
-     * @param City $city
+     * @param int $id
+     *
+     * @return Trip
      */
-    public function removeCity(City $city) {
-        if (!$this->cities->contains($city)) {
-            return ;
-        }
+    public function setId(int $id)
+    {
+        $this->id = $id;
+        return $this;
+    }
 
-        $this->cities->removeElement($city);
-        $city->removeTrip($this);
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return Trip
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return Date
+     */
+    public function getFromDate(): Date
+    {
+        return $this->fromDate;
+    }
+
+    /**
+     * @param Date $fromDate
+     *
+     * @return Trip
+     */
+    public function setFromDate(Date $fromDate)
+    {
+        $this->fromDate = $fromDate;
+        return $this;
+    }
+
+    /**
+     * @return Date
+     */
+    public function getToDate(): Date
+    {
+        return $this->toDate;
+    }
+
+    /**
+     * @param Date $toDate
+     *
+     * @return Trip
+     */
+    public function setToDate(Date $toDate)
+    {
+        $this->toDate = $toDate;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isConfirmed(): bool
+    {
+        return $this->confirmed;
+    }
+
+    /**
+     * @param bool $confirmed
+     *
+     * @return Trip
+     */
+    public function setConfirmed(bool $confirmed)
+    {
+        $this->confirmed = $confirmed;
+        return $this;
+    }
+
+    /**
+     * @return Traveler
+     */
+    public function getTraveler(): Traveler
+    {
+        return $this->traveler;
+    }
+
+    /**
+     * @param Traveler $traveler
+     *
+     * @return Trip
+     */
+    public function setTraveler(Traveler $traveler)
+    {
+        $this->traveler = $traveler;
+        return $this;
+    }
+
+    /**
+     * @return TripCityRelation
+     */
+    public function getTripCityRelation(): TripCityRelation
+    {
+        return $this->tripCityRelation;
+    }
+
+    /**
+     * @param TripCityRelation $tripCityRelation
+     *
+     * @return Trip
+     */
+    public function setTripCityRelation(TripCityRelation $tripCityRelation)
+    {
+        $this->tripCityRelation = $tripCityRelation;
+        return $this;
     }
 }

@@ -2,8 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,35 +35,85 @@ class City
     protected $country;
 
     /**
-     * @var Collection|Trip[]
+     * @var TripCityRelation
      *
-     * @ORM\ManyToMany(targetEntity="Trip", mappedBy="trip")
+     * @ORM\OneToMany(targetEntity="TripCityRelation", mappedBy="city")
      */
-    protected $trips;
+    protected $tripCityRelation;
 
     /**
-     * Default constructor, initializes collections
+     * @return int
      */
-    public function __construct()
+    public function getId(): int
     {
-        $this->trips = new ArrayCollection();
+        return $this->id;
     }
 
-    public function addTrip(Trip $trip)
+    /**
+     * @param int $id
+     *
+     * @return City
+     */
+    public function setId(int $id)
     {
-        if ($this->trips->contains($trip)) {
-            return ;
-        }
-
-        $this->trips->add($trip);
+        $this->id = $id;
+        return $this;
     }
 
-    public function removeTrip(Trip $trip)
+    /**
+     * @return string
+     */
+    public function getName(): string
     {
-        if (!$this->trips->contains($trip)) {
-            return ;
-        }
+        return $this->name;
+    }
 
-        $this->trips->removeElement($trip);
+    /**
+     * @param string $name
+     *
+     * @return City
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return Country
+     */
+    public function getCountry(): Country
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param Country $country
+     *
+     * @return City
+     */
+    public function setCountry(Country $country)
+    {
+        $this->country = $country;
+        return $this;
+    }
+
+    /**
+     * @return TripCityRelation
+     */
+    public function getTripCityRelation(): TripCityRelation
+    {
+        return $this->tripCityRelation;
+    }
+
+    /**
+     * @param TripCityRelation $tripCityRelation
+     *
+     * @return City
+     */
+    public function setTripCityRelation(TripCityRelation $tripCityRelation)
+    {
+        $this->tripCityRelation = $tripCityRelation;
+        return $this;
     }
 }
