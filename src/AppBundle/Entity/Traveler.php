@@ -3,13 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints\Email;
 
 /**
  * @ORM\Entity()
  * @ORM\Table(name="traveler")
  */
-class Traveler
+class Traveler implements UserInterface
 {
     /**
      * @var integer
@@ -70,6 +71,14 @@ class Traveler
      * @ORM\Column(type="string", length=128)
      */
     protected $password;
+
+    /**
+     * Traveler constructor.
+     */
+    public function __construct()
+    {
+
+    }
 
     /**
      * @return integer
@@ -210,5 +219,22 @@ class Traveler
     {
         $this->password = $password;
         return $this;
+    }
+
+    public function getRoles()
+    {
+        return [
+            'ROLE_USER'
+        ];
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
     }
 }
