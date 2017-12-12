@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * This file is used to input login details in the database for testing
+ *
+ * To run Fixtures -> bin/console doctrine:fixtures:load
+ */
+
 namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Traveler;
