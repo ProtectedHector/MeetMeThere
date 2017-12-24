@@ -5,10 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TravelerRepository")
  * @ORM\Table(name="traveler")
+ * @UniqueEntity(fields={"email", "username"}, message="This is already taken")
  */
 class Traveler implements UserInterface
 {
@@ -46,6 +49,8 @@ class Traveler implements UserInterface
      * @var Email
      *
      * @ORM\Column(type="string", length=254)
+     *
+     * @Assert\Email()
      */
     protected $email;
 
