@@ -15,12 +15,17 @@ class TravelerType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
-            ->add('username', TextType::class)
-            ->add('email', TextType::class)
+            ->add('firstName', TextType::class, ['attr' => array('class' => 'form-control')])
+            ->add('lastName', TextType::class, ['attr' => array('class' => 'form-control')])
+            ->add('username', TextType::class, ['attr' => array('class' => 'form-control')])
+            ->add('email', TextType::class, ['attr' => array('class' => 'form-control')])
             ->add('password', RepeatedType::class, [
-                'type' => PasswordType::class
+                'type' => PasswordType::class,
+                'invalid_message' => 'The password fields must match.',
+                'options' => array('attr' => array('class' => 'password-field form-control')),
+                'required' => true,
+                'first_options'  => array('label' => 'Password'),
+                'second_options' => array('label' => 'Repeat Password'),
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
