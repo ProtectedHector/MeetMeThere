@@ -71,7 +71,7 @@ class Traveler implements UserInterface
      * @Assert\NotBlank(message="Please, upload the profile picture as an image.")
      * @Assert\File(mimeTypes={ "image/jpeg" })
      */
-    protected $photoUrl;
+    protected $photo;
 
     /**
      * @var string
@@ -194,19 +194,19 @@ class Traveler implements UserInterface
     /**
      * @return string
      */
-    public function getPhotoUrl()
+    public function getPhoto()
     {
-        return $this->photoUrl;
+        return $this->photo;
     }
 
     /**
-     * @param string $photoUrl
+     * @param string $photo
      *
      * @return Traveler
      */
-    public function setPhotoUrl($photoUrl)
+    public function setPhoto($photo)
     {
-        $this->photoUrl = $photoUrl;
+        $this->photo = $photo;
         return $this;
     }
 

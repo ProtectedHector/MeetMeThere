@@ -28,7 +28,7 @@ class TravelerType extends AbstractType {
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat Password'),
             ])
-            ->add('photoUrl', FileType::class, array('label' => 'Profile Picture'))
+            ->add('photo', FileType::class, array('label' => 'Profile Picture'))
             ->add('submit', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-success pull-right'
