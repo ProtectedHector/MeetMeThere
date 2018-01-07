@@ -172,19 +172,19 @@ class Traveler implements UserInterface
     /**
      * @return Country
      */
-    public function getNationality()
+    public function getCountry()
     {
-        return $this->nationality;
+        return $this->country;
     }
 
     /**
-     * @param Country $nationality
+     * @param Country $country
      *
      * @return Traveler
      */
-    public function setNationality($nationality)
+    public function setCountry($country)
     {
-        $this->nationality = $nationality;
+        $this->country = $country;
         return $this;
     }
 
