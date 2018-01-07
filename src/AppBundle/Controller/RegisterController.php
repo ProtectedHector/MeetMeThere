@@ -30,6 +30,13 @@ class RegisterController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $traveler->setPassword($passwordEncoder->encodePassword($traveler, $traveler->getPassword()));
+            $file = $traveler->getPhoto();
+            $filename = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('profile_pictures_dir'),
+                $filename
+            );
+            $traveler->setPhoto($filename);
             $em->persist($traveler);
             $em->flush();
 
