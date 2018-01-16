@@ -2,10 +2,9 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
@@ -63,6 +62,15 @@ class Trip
      * @ORM\OneToMany(targetEntity="TripCityRelation", mappedBy="trip")
      */
     protected $tripCityRelation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @Assert\File(mimeTypes={ "image/jpeg" })
+     */
+    protected $photo;
 
     /**
      * @return int
@@ -195,5 +203,21 @@ class Trip
     {
         $this->tripCityRelation = $tripCityRelation;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhoto(): string
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param string $photo
+     */
+    public function setPhoto(string $photo)
+    {
+        $this->photo = $photo;
     }
 }
