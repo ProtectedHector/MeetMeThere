@@ -35,6 +35,20 @@ class City
     protected $country;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(type="decimal", precision=10, scale=8)
+     */
+    protected $latitude;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(type="decimal", precision=11, scale=8)
+     */
+    protected $longitude;
+
+    /**
      * @var TripCityRelation
      *
      * @ORM\OneToMany(targetEntity="TripCityRelation", mappedBy="city")
@@ -96,6 +110,38 @@ class City
     {
         $this->country = $country;
         return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLatitude(): float
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * @param float $latitude
+     */
+    public function setLatitude(float $latitude)
+    {
+        $this->latitude = $latitude;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLongitude(): float
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * @param float $longitude
+     */
+    public function setLongitude(float $longitude)
+    {
+        $this->longitude = $longitude;
     }
 
     /**
