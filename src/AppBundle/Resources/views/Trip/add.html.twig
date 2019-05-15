@@ -1,0 +1,61 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        {{ form_start(form) }}
+        {{ form_end(form) }}
+
+    </div>
+{% endblock body %}
+
+{% block javascripts %}
+    <script>
+        $('#appbundle_trip_country').change(function () {
+            var countrySelector = $(this);
+
+            // Request the cities of the selected country.
+            $.ajax({
+                url: "{{ path('trip_list_cities') }}",
+                type: "GET",
+                dataType: "JSON",
+                data: {
+                    countryid: countrySelector.val()
+                },
+                success: function (cities) {
+                    var citySelect = $("#appbundle_trip_city");
+
+                    // Remove current options
+                    citySelect.html('');
+
+                    // Empty value ...
+                    citySelect.append('<option value> Select a city of ' + countrySelector.find("option:selected").text() + ' ...</option>');
+
+
+                    $.each(cities, function (key, city) {
+                        citySelect.append('<option value="' + city.id + '">' + city.name + '</option>');
+                    });
+                },
+                error: function (err) {
+                    alert("An error ocurred while loading data ...");
+                },
+                timeout: 60000 // 60 seconds
+            });
+        });
+        var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+        $('#appbundle_trip_from').datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'fontawesome',
+            minDate: today,
+            maxDate: function () {
+                return $('#appbundle_trip_to').val();
+            }
+        });
+        $('#appbundle_trip_to').datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'fontawesome',
+            minDate: function () {
+                return $('#appbundle_trip_from').val();
+            }
+        });
+    </script>
+{% endblock %}
