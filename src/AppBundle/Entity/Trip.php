@@ -7,7 +7,6 @@ use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity()
  * @ORM\Table(name="trip")
  */
 class Trip
