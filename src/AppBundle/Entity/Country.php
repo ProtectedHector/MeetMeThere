@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CountryRepository")
  * @ORM\Table(name="country")
  */
 class Country
@@ -131,5 +131,7 @@ class Country
         return $this;
     }
 
-
+    public function __toString() {
+        return $this->name;
+    }
 }
