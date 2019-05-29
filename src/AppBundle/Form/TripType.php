@@ -39,21 +39,31 @@ class TripType extends AbstractType
         // Remove the dependent select from the original buildForm as this will be
         // dynamically added later and the trigger as well
         $builder
-            ->add('name', TextType::class, [
-                'attr' => array('class' => 'form-control'),
-                'label' => 'Name of your trip'
-            ])
-            ->add('from', DateType::class, [
-//                'attr' => array('class' => 'form-control js-datepicker'),
-                'widget' => 'single_text',
-                'html5' => false // do not render as type="date", to avoid HTML5 date pickers
-            ])
-            ->add('to', DateType::class, [
-//                'attr' => array('class' => 'form-control js-datepicker'),
-                'widget' => 'single_text',
-                'html5' => false // do not render as type="date", to avoid HTML5 date pickers
-            ])
-            ->add('confirmed', CheckboxType::class, ['attr' => array('class' => 'form-control')])
+            ->add(
+                'name',
+                TextType::class,
+                [
+                    'attr' => array('class' => 'form-control'),
+                    'label' => 'Name of your trip',
+                ]
+            )
+            ->add(
+                'from',
+                DateType::class,
+                [
+                    'widget' => 'single_text',
+                    'html5' => false // do not render as type="date", to avoid HTML5 date pickers
+                ]
+            )
+            ->add(
+                'to',
+                DateType::class,
+                [
+                    'widget' => 'single_text',
+                    'html5' => false // do not render as type="date", to avoid HTML5 date pickers
+                ]
+            )
+            ->add('confirmed', CheckboxType::class)
             //->add('city', TripCityRelation::class, ['attr' => array('class' => 'form-control')])
             ->add('photo', FileType::class, array('label' => 'Photo'))
             ->add('submit', SubmitType::class, [

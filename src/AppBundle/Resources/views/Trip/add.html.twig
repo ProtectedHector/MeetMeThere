@@ -1,8 +1,43 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <div class="row">
+    <div class="row mt-5">
         {{ form_start(form) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.from) }}
+            {{ form_row(form.to) }}
+            <div class="row">
+                <div class="col-3">
+                    {{ form_label(form.confirmed) }}
+                </div>
+                <div class="col-9">
+                    {{ form_widget(form.confirmed) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    {{ form_label(form.photo) }}
+                </div>
+                <div class="col-9">
+                    {{ form_widget(form.photo) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    {{ form_label(form.country) }}
+                </div>
+                <div class="col-9">
+                    {{ form_widget(form.country) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    {{ form_label(form.city) }}
+                </div>
+                <div class="col-9">
+                    {{ form_widget(form.city) }}
+                </div>
+            </div>
         {{ form_end(form) }}
 
     </div>
