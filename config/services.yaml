@@ -2,13 +2,8 @@
 # Files in the packages/ subdirectory configure your dependencies.
 
 # Put parameters here that don't need to change on each machine where the app is deployed
-# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+#
 parameters:
-    database_host: 127.0.0.1
-    database_port: 8889
-    database_name: meet_me_there
-    database_user: symfony_user
-    database_password: 4jacGR2mtkfj8QR5
 
 services:
     # default configuration for services in *this* file
