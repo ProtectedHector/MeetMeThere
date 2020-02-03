@@ -42,4 +42,3 @@ auth.json
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
-.env
